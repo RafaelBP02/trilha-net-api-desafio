@@ -103,8 +103,8 @@ namespace TrilhaApiDesafio.Controllers
 
             tarefaBanco.Titulo= tarefa.Titulo;
             tarefaBanco.Descricao = tarefa.Descricao;
-            tarefaBanco.Data = tarefa.Data;
             tarefaBanco.Status = tarefa.Status;
+            tarefaBanco.Data = tarefa.Data;
 
             _context.Add(tarefaBanco);
             _context.SaveChanges();
@@ -121,6 +121,10 @@ namespace TrilhaApiDesafio.Controllers
                 return NotFound();
 
             // TODO: Remover a tarefa encontrada através do EF e salvar as mudanças (save changes)
+
+            _context.Remove(tarefaBanco);
+            _context.SaveChanges();
+
             return NoContent();
         }
     }
